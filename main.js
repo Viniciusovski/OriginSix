@@ -51,3 +51,12 @@ window.addEventListener('scroll', function(){
     }
 })
 
+/* Testimoniasl carossel slider swiper*/
+const swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    pagination: {
+      el: '.swiper-pagination'
+    },
+    mousewheel: true,
+    keyboard: true
+  })
