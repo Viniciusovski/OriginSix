@@ -35,6 +35,10 @@ img {
 
   /* fonts */
   --title-font-size: 1.875rem;
+  --subtitle-font-size: 1rem;
+
+  --title-font: "Poppins", sans-serif;
+  --body-font: "DM Sans", sans-serif;
 }
 
 /*===  BASE ============================ */
@@ -43,14 +47,14 @@ html {
 }
 
 body {
-  font: 400 1rem 'DM Sans', sans-serif;
+  font: 400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialiased;
 }
 
 .title {
-  font: 700 var(--title-font-size) 'Poppins', sans-serif;
+  font: 700 var(--title-font-size) var(--title-font);
   color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
@@ -63,7 +67,7 @@ body {
   align-items: center;
   padding: 0 2rem;
   border-radius: 0.25rem;
-  font: 500 1rem 'DM Sans', sans-serif;
+  font: 500 1rem var(--body-font);
   transition: background 0.3s;
 }
 
@@ -101,11 +105,15 @@ body {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section .title {
   margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
 }
 
 .section header {
@@ -133,13 +141,9 @@ body {
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
 }
 
-main {
-  margin-top: calc(var(--header-height) + 2rem);
-}
-
 /*====  LOGO ============================ */
 .logo {
-  font: 700 1.31rem 'Poppins', sans-serif;
+  font: 700 1.31rem var(--title-font);
   color: var(--title-color);
 }
 
@@ -174,7 +178,7 @@ nav ul li a:hover {
 }
 
 nav ul li a::after {
-  content: '';
+  content: "";
   width: 0%;
   height: 2px;
   background: var(--base-color);
@@ -265,7 +269,7 @@ nav.show div.icon-close {
 }
 
 #home .image::before {
-  content: '';
+  content: "";
   height: 100%;
   width: 100%;
   background: var(--base-color-second);
@@ -313,7 +317,7 @@ nav.show div.icon-close {
 }
 
 #about .image::before {
-  content: '';
+  content: "";
   height: 100%;
   width: 100%;
   background: var(--base-color-second);
@@ -461,6 +465,10 @@ footer {
   background: var(--base-color);
 }
 
+footer .section{
+  padding: 4rem 0;
+}
+
 footer .logo {
   display: inline-block;
   margin-bottom: 1.5rem;
@@ -476,8 +484,12 @@ footer i {
   color: var(--text-color-light);
 }
 
-footer .social a {
-  margin-right: 2rem;
+footer .social{
+  grid-auto-flow: column;
+  width: fit-content;
+}
+
+footer .social a {  
   transition: 0.3s;
   display: inline-block;
 }
@@ -516,12 +528,55 @@ footer .social a:hover {
 
 /*========= MEDIA QUERIES =========*/
 /* extra large devices: 1200 > */
+@media (min-width: 1200px) {
+  .section{
+    padding: 10rem 0;
+  }
 
+  nav .menu{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul{
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav .menu ul li a.title{
+    font: 400 1rem var(--body-font);
+  }
+
+  nav .icon-menu{
+    display: none;
+  }
+
+  /* home */
+
+  #home .container{
+    grid-auto-flow: column;
+    width: fit-content;
+  }
+
+  #home .image{
+    order: 1;    
+  }
+
+  #home .text{
+    order: 0;
+  }
+
+  main {
+    margin-top: var(--header-height);
+  }
+}
 /* large devices: 1023 > */
 /* large devices: 992 > */
 @media (min-width: 992px) {
   :root {
-    --title-font-size: 2.2rem;
+    --title-font-size: 2.25rem;
+    --subtitle-font-size: 1.125rem;
   }
 }
 /* medium devices: 767 > */
